@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Fragment practice</string>
+    <string name="user_avatar">user avatar</string>
+    <string name="avatar_uri">avatar uri</string>
+    <string name="user_name">user name</string>
+    <string name="phone_number">phone number</string>
+    <string name="ok">OK</string>
+</resources>
