@@ -12,15 +12,17 @@ class FragmentC : Fragment(R.layout.fragment_c) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.nextButton).setOnClickListener {
-            (requireActivity() as? NavigationListener)?.onFragmentCNext()
-        }
-        view.findViewById<Button>(R.id.backToAButton).setOnClickListener {
-            (requireActivity() as? NavigationListener)?.onFragmentCBackToA()
-        }
+        with(view) {
+            findViewById<Button>(R.id.nextButton).setOnClickListener {
+                (requireActivity() as? NavigationListener)?.onFragmentCNext()
+            }
+            findViewById<Button>(R.id.backToAButton).setOnClickListener {
+                (requireActivity() as? NavigationListener)?.onFragmentCBackToA()
+            }
 
-        view.findViewById<TextView>(R.id.helloTextView).text =
-            arguments?.getString(HELLO_TEXT_EXTRA)
+            findViewById<TextView>(R.id.helloTextView).text =
+                arguments?.getString(HELLO_TEXT_EXTRA)
+        }
     }
 
     interface NavigationListener {

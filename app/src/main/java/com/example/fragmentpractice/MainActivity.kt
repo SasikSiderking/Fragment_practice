@@ -16,19 +16,23 @@ class MainActivity : AppCompatActivity(), FragmentA.NavigationListener,
 
     override fun onFragmentANext() {
         supportFragmentManager.commit {
-            replace(R.id.fragmentContainer, FragmentB.newInstance(), FragmentB.FRAGMENT_B_TAG)
-            addToBackStack(FragmentB.FRAGMENT_B_TAG)
+            with(FragmentB) {
+                replace(R.id.fragmentContainer, newInstance(), FRAGMENT_B_TAG)
+                addToBackStack(FRAGMENT_B_TAG)
+            }
         }
     }
 
     override fun onFragmentBNext(helloText: String) {
         supportFragmentManager.commit {
-            replace(
-                R.id.fragmentContainer,
-                FragmentC.newInstance(helloText),
-                FragmentC.FRAGMENT_C_TAG
-            )
-            addToBackStack(FragmentC.FRAGMENT_C_TAG)
+            with(FragmentC) {
+                replace(
+                    R.id.fragmentContainer,
+                    newInstance(helloText),
+                    FRAGMENT_C_TAG
+                )
+                addToBackStack(FRAGMENT_C_TAG)
+            }
         }
     }
 
@@ -38,8 +42,10 @@ class MainActivity : AppCompatActivity(), FragmentA.NavigationListener,
 
     override fun onFragmentCNext() {
         supportFragmentManager.commit {
-            replace(R.id.fragmentContainer, FragmentD.newInstance(), FragmentD.FRAGMENT_D_TAG)
-            addToBackStack(FragmentD.FRAGMENT_D_TAG)
+            with(FragmentD) {
+                replace(R.id.fragmentContainer, newInstance(), FRAGMENT_D_TAG)
+                addToBackStack(FRAGMENT_D_TAG)
+            }
         }
     }
 

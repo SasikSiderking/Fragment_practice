@@ -10,11 +10,13 @@ class FragmentB : Fragment(R.layout.fragment_b) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.nextButton).setOnClickListener {
-            (requireActivity() as? NavigationListener)?.onFragmentBNext(HELLO_TEXT)
-        }
-        view.findViewById<Button>(R.id.backToAButton).setOnClickListener {
-            (requireActivity() as? NavigationListener)?.onFragmentBBack()
+        with(view) {
+            findViewById<Button>(R.id.nextButton).setOnClickListener {
+                (requireActivity() as? NavigationListener)?.onFragmentBNext(HELLO_TEXT)
+            }
+            findViewById<Button>(R.id.backToAButton).setOnClickListener {
+                (requireActivity() as? NavigationListener)?.onFragmentBBack()
+            }
         }
     }
 
