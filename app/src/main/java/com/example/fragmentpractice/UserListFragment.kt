@@ -29,10 +29,12 @@ class UserListFragment : Fragment(R.layout.fragment_user_list) {
 
         private const val USER_LIST_EXTRA = "USER_LIST_EXTRA"
 
+        @JvmStatic
         fun newInstance(list: List<UserItem>) = UserListFragment().apply {
             arguments = bundleOf(USER_LIST_EXTRA to list)
         }
 
+        @JvmStatic
         fun newArgumentsBundle(list: List<UserItem>) = bundleOf(USER_LIST_EXTRA to list)
     }
 }

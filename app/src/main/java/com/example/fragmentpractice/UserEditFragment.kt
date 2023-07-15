@@ -47,6 +47,7 @@ class UserEditFragment : Fragment(R.layout.fragment_user_edit) {
 
         private const val USER_EDIT_EXTRA = "USER_EDIT_EXTRA"
 
+        @JvmStatic
         fun newInstance(user: UserItem) = UserEditFragment().apply {
             arguments = bundleOf(USER_EDIT_EXTRA to user)
         }

@@ -81,6 +81,6 @@ class MainActivity : AppCompatActivity(), UserListFragment.UserClickListener,
     }
 
     companion object {
-        const val LIST_KEY = "LIST_KEY"
+        private const val LIST_KEY = "LIST_KEY"
     }
 }
