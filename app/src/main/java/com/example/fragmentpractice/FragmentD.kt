@@ -11,12 +11,12 @@ class FragmentD : Fragment(R.layout.fragment_d) {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.backToBButton).setOnClickListener {
-            (requireActivity() as? NavigationListener)?.onFragmentDBackBackToB()
+            (requireActivity() as? NavigationListener)?.onFragmentDBackToB()
         }
     }
 
     interface NavigationListener {
-        fun onFragmentDBackBackToB()
+        fun onFragmentDBackToB()
     }
 
     companion object {

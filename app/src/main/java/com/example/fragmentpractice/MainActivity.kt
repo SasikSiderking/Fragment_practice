@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity(), FragmentA.NavigationListener,
         )
     }
 
-    override fun onFragmentDBackBackToB() {
+    override fun onFragmentDBackToB() {
         supportFragmentManager.popBackStack(FragmentB.FRAGMENT_B_TAG, 0)
     }
 }
