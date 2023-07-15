@@ -31,6 +31,7 @@ class FragmentB : Fragment(R.layout.fragment_b) {
 
         const val FRAGMENT_B_TAG = "FRAGMENT_B_TAG"
 
+        @JvmStatic
         fun newInstance() = FragmentB()
     }
 }

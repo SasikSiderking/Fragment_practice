@@ -23,6 +23,7 @@ class FragmentD : Fragment(R.layout.fragment_d) {
 
         const val FRAGMENT_D_TAG = "FRAGMENT_D_TAG"
 
+        @JvmStatic
         fun newInstance() = FragmentD()
     }
 }

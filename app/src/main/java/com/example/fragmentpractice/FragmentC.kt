@@ -24,6 +24,7 @@ class FragmentC : Fragment(R.layout.fragment_c) {
     }
 
     interface NavigationListener {
+
         fun onFragmentCNext()
 
         fun onFragmentCBackToA()
@@ -35,6 +36,7 @@ class FragmentC : Fragment(R.layout.fragment_c) {
 
         private const val HELLO_TEXT_EXTRA = "HELLO_TEXT_EXTRA"
 
+        @JvmStatic
         fun newInstance(helloText: String) = FragmentC().apply {
             arguments = bundleOf(HELLO_TEXT_EXTRA to helloText)
         }
