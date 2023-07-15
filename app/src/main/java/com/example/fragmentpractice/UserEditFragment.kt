@@ -14,24 +14,26 @@ class UserEditFragment : Fragment(R.layout.fragment_user_edit) {
 
         val user = arguments?.parcelable<UserItem>(USER_EDIT_EXTRA)
 
-        val avatarEditText = view.findViewById<EditText>(R.id.avatar)
-        val nameEditText = view.findViewById<EditText>(R.id.name)
-        val phoneEditText = view.findViewById<EditText>(R.id.phoneNumber)
-        val button = view.findViewById<Button>(R.id.okButton)
+        with(view) {
+            val avatarEditText = findViewById<EditText>(R.id.avatar)
+            val nameEditText = findViewById<EditText>(R.id.name)
+            val phoneEditText = findViewById<EditText>(R.id.phoneNumber)
+            val okButton = findViewById<Button>(R.id.okButton)
 
-        if (user != null) {
-            avatarEditText.setText(user.avatar)
-            nameEditText.setText(user.name)
-            phoneEditText.setText(user.phoneNumber)
+            if (user != null) {
+                avatarEditText.setText(user.avatar)
+                nameEditText.setText(user.name)
+                phoneEditText.setText(user.phoneNumber)
 
-            button.setOnClickListener {
-                (requireActivity() as? OkButtonClickListener)?.onOkButtonClick(
-                    user.copy(
-                        avatar = avatarEditText.text.toString(),
-                        name = nameEditText.text.toString(),
-                        phoneNumber = phoneEditText.text.toString()
+                okButton.setOnClickListener {
+                    (requireActivity() as? OkButtonClickListener)?.onOkButtonClick(
+                        user.copy(
+                            avatar = avatarEditText.text.toString(),
+                            name = nameEditText.text.toString(),
+                            phoneNumber = phoneEditText.text.toString()
+                        )
                     )
-                )
+                }
             }
         }
     }

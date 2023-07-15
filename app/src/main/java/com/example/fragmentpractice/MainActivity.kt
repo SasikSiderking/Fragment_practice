@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity(), UserListFragment.UserClickListener,
         (1..4).map {
             UserItem(
                 id = it,
-                avatar = this.country().flag(),
-                name = this.name().firstName(),
-                phoneNumber = this.phoneNumber().cellPhone()
+                avatar = country().flag(),
+                name = name().firstName(),
+                phoneNumber = phoneNumber().cellPhone()
             )
         }
     }
@@ -33,7 +33,15 @@ class MainActivity : AppCompatActivity(), UserListFragment.UserClickListener,
         }
 
         if (supportFragmentManager.findFragmentByTag(USER_LIST_FRAGMENT_TAG) == null) {
-            openUsersListFragment()
+            with(supportFragmentManager) {
+                commit {
+                    replace(
+                        R.id.container,
+                        UserListFragment.newInstance(items),
+                        USER_LIST_FRAGMENT_TAG
+                    )
+                }
+            }
         }
     }
 
@@ -43,39 +51,6 @@ class MainActivity : AppCompatActivity(), UserListFragment.UserClickListener,
     }
 
     override fun onUserClick(user: UserItem) {
-        openUserEditFragment(user)
-    }
-
-    override fun onOkButtonClick(user: UserItem) {
-        val currentItems = items.toMutableList()
-
-        with(currentItems) {
-            this[indexOf(find { userItem -> userItem.id == user.id })] = user
-        }
-
-        items = currentItems
-
-        supportFragmentManager.popBackStackImmediate()
-        val listFragment = supportFragmentManager.findFragmentByTag(USER_LIST_FRAGMENT_TAG)
-        listFragment?.apply {
-            arguments = newArgumentsBundle(items)
-            view?.let { onViewCreated(it, null) }
-        }
-    }
-
-    private fun openUsersListFragment() {
-        with(supportFragmentManager) {
-            commit {
-                replace(
-                    R.id.container,
-                    UserListFragment.newInstance(items),
-                    USER_LIST_FRAGMENT_TAG
-                )
-            }
-        }
-    }
-
-    private fun openUserEditFragment(user: UserItem) {
         with(supportFragmentManager) {
             commit {
                 replace(
@@ -85,6 +60,23 @@ class MainActivity : AppCompatActivity(), UserListFragment.UserClickListener,
                 )
                 addToBackStack(USER_EDIT_FRAGMENT_TAG)
             }
+        }
+    }
+
+    override fun onOkButtonClick(user: UserItem) {
+        val currentItems = items.toMutableList()
+
+        with(currentItems) {
+            set(indexOf(find { userItem -> userItem.id == user.id }), user)
+        }
+
+        items = currentItems
+
+        supportFragmentManager.popBackStack()
+        val listFragment = supportFragmentManager.findFragmentByTag(USER_LIST_FRAGMENT_TAG)
+        listFragment?.apply {
+            arguments = newArgumentsBundle(items)
+            view?.let { onViewCreated(it, null) }
         }
     }
 

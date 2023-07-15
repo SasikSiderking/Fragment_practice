@@ -28,7 +28,7 @@ data class UserItem(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<UserItem> {
+    private companion object CREATOR : Parcelable.Creator<UserItem> {
         override fun createFromParcel(parcel: Parcel): UserItem {
             return UserItem(parcel)
         }
